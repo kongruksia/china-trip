@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#111; padding:20px;">
+<h2 style="color:white;">Image Load Test</h2>
+<p style="color:white;">If these images appear, the URLs are accessible:</p>
+
+<p style="color:#aaa;">1. Wikimedia Commons (upload.wikimedia.org):</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bund_at_night_Shanghai.jpg/400px-Bund_at_night_Shanghai.jpg" width="300" onerror="this.nextSibling.style.display='block'" style="border:2px solid green">
+<span style="color:red;display:none"> ❌ BLOCKED</span>
+
+<p style="color:#aaa;">2. Wikipedia thumbnail:</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shanghai_-_Yu_Garden_-_0035.jpg/400px-Shanghai_-_Yu_Garden_-_0035.jpg" width="300" onerror="this.nextSibling.style.display='block'" style="border:2px solid green">
+<span style="color:red;display:none"> ❌ BLOCKED</span>
+
+<p style="color:#aaa;">3. Wikimedia commons direct:</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Pumpkin_tangyuan_%28%E6%B1%A4%E5%9C%86%29_with_red_bean_baste_and_black_sesame_fillings.jpg" width="300" onerror="this.nextSibling.style.display='block'" style="border:2px solid green">
+<span style="color:red;display:none"> ❌ BLOCKED</span>
+
+<p style="color:#aaa;">4. Google Fonts (known to work):</p>
+<img src="https://fonts.gstatic.com/s/i/googlematerialicons/photo/v12/24px.svg" width="50" onerror="this.nextSibling.style.display='block'" style="border:2px solid green">
+<span style="color:red;display:none"> ❌ BLOCKED</span>
+</body>
+</html>

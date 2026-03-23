@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 — Shanghai: Yu Garden &amp; French Concession</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --cream: #FDF6EC;
+  --cream2: #F5E9D0;
+  --gold: #C9922C;
+  --gold2: #E8C96C;
+  --gold-pale: #FEF3DC;
+  --coral: #D96E4A;
+  --coral2: #F2AA85;
+  --brown: #4A2C1A;
+  --brown2: #7B4E38;
+  --text: #2C1810;
+  --text2: #6B4033;
+  --white: #FFFFFF;
+  --shadow: 0 4px 24px rgba(44,24,16,0.10);
+  --shadow2: 0 10px 36px rgba(44,24,16,0.18);
+  --green: #2E7D32;
+  --teal: #006064;
+}
+body { font-family:'Noto Sans Thai','Inter',sans-serif; background:var(--cream); color:var(--text); max-width:820px; margin:0 auto; padding-bottom:70px; }
+
+/* ══ HERO ══ */
+.hero { position:relative; height:460px; overflow:hidden; background:linear-gradient(135deg,#1a3520,#2d5a35,#1a2e1a); }
+.hero img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.88; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(5,20,8,0.08) 0%,rgba(5,20,8,0.38) 55%,rgba(5,20,8,0.86) 100%); }
+.hero-content { position:absolute; bottom:38px; left:38px; right:38px; }
+.day-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#3D9A50,#2A7238); color:white; font-size:11px; font-weight:800; letter-spacing:3px; text-transform:uppercase; padding:8px 22px; border-radius:30px; margin-bottom:14px; box-shadow:0 5px 18px rgba(40,120,60,0.55); }
+.date-tag { position:absolute; top:28px; right:38px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); color:white; font-size:13px; font-weight:500; padding:8px 18px; border-radius:22px; border:1px solid rgba(255,255,255,0.28); }
+.hero-title { font-family:'Playfair Display',serif; font-size:50px; font-weight:900; color:white; line-height:1.05; text-shadow:0 4px 20px rgba(0,0,0,0.6); }
+.hero-sub { color:rgba(255,255,255,0.78); font-size:15px; font-weight:400; margin-top:10px; letter-spacing:3px; text-transform:uppercase; }
+
+/* ══ NAV BAR ══ */
+.day-nav { background:var(--brown); padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+.day-nav a { color:var(--gold2); text-decoration:none; font-size:13px; font-weight:700; display:flex; align-items:center; gap:6px; }
+.day-nav .center { color:rgba(255,255,255,0.45); font-size:12px; letter-spacing:2px; }
+
+/* ══ CONTENT ══ */
+.content { padding:36px 30px; }
+
+/* ══ SUMMARY BOX ══ */
+.summary-box { background:linear-gradient(135deg,var(--gold-pale),#FFFCF5); border:1.5px solid var(--gold2); border-radius:20px; padding:22px 26px; margin-bottom:38px; display:flex; gap:18px; flex-wrap:wrap; align-items:center; }
+.sum-item { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--brown2); font-weight:500; }
+.sum-icon { font-size:20px; }
+
+/* ══ SECTION HEADER ══ */
+.sec-head { font-size:10px; font-weight:800; letter-spacing:4px; color:var(--coral); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.sec-head::after { content:''; flex:1; height:1px; background:var(--coral2); opacity:0.35; }
+
+/* ══ STOP CARDS ══ */
+.stop { background:var(--white); border-radius:24px; box-shadow:var(--shadow); margin-bottom:30px; overflow:hidden; transition:box-shadow 0.3s,transform 0.3s; }
+.stop:hover { box-shadow:var(--shadow2); transform:translateY(-3px); }
+.stop-top { padding:24px 24px 0 24px; display:flex; gap:18px; align-items:flex-start; }
+.num-circle { width:48px; height:48px; flex-shrink:0; background:linear-gradient(135deg,#D4A030,#9E6E18); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:22px; font-weight:800; box-shadow:0 5px 16px rgba(180,130,40,0.45); margin-top:2px; font-family:'Playfair Display',serif; }
+.stop-meta { flex:1; }
+.stop-time { font-size:11px; font-weight:700; color:var(--brown2); letter-spacing:1.5px; margin-bottom:6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.stop-name { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--text); line-height:1.12; margin-bottom:4px; }
+.stop-name-th { font-size:14px; color:var(--brown2); font-weight:400; }
+.stop-img { width:100%; height:240px; object-fit:cover; display:block; margin-top:18px; }
+.stop-img-placeholder { width:100%; height:240px; display:flex; align-items:center; justify-content:center; font-size:80px; margin-top:18px; }
+.stop-body { padding:20px 24px 24px 24px; }
+.th-label { font-size:11px; font-weight:800; color:var(--coral); letter-spacing:1px; text-transform:uppercase; margin-top:16px; margin-bottom:8px; display:block; }
+.stop-desc { font-size:14.5px; line-height:1.78; color:var(--text2); }
+
+/* ══ TRANSPORT PILLS ══ */
+.transport-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.pill { display:inline-flex; align-items:center; gap:5px; padding:6px 14px; border-radius:22px; font-size:11px; font-weight:700; }
+.pill-walk { background:var(--cream2); color:var(--brown2); border:1px solid #D4B98A; }
+.pill-taxi { background:#FFF9E0; color:#8B6500; border:1px solid #F0D060; }
+.l1 { background:#E4003C; color:white; }
+.l2 { background:#007A3D; color:white; }
+.l7 { background:#EA5504; color:white; }
+.l9 { background:#009A97; color:white; }
+.l10 { background:#8E44AD; color:white; }
+.l13 { background:#D35400; color:white; }
+.l14 { background:#2C6FA8; color:white; }
+
+/* ══ HIGHLIGHT BOX ══ */
+.highlight { background:linear-gradient(135deg,#FEF9EC,#FFF5DC); border:1.5px solid #E0C870; border-radius:14px; padding:14px 18px; margin-top:14px; font-size:14px; line-height:1.68; color:var(--brown2); }
+.highlight strong { color:#A07020; }
+.highlight-green { background:linear-gradient(135deg,#F0FFF4,#E8F5EC); border:1.5px solid #A5D6A7; border-radius:14px; padding:14px 18px; margin-top:14px; font-size:14px; line-height:1.68; color:#2E5A30; }
+.highlight-green strong { color:#1B5E20; }
+
+/* ══ FOOD BOX ══ */
+.food-box { background:linear-gradient(135deg,#FFF8F0,#FFEDDB); border-top:1.5px solid #F0CEAD; padding:20px 24px 24px 24px; }
+.food-box-title { font-size:10px; font-weight:800; letter-spacing:3px; color:var(--coral); text-transform:uppercase; margin-bottom:16px; }
+.food-grid { display:flex; gap:14px; flex-wrap:wrap; }
+.food-card { flex:1; min-width:140px; max-width:210px; background:white; border-radius:16px; overflow:hidden; box-shadow:0 3px 12px rgba(0,0,0,0.09); }
+.food-card img { width:100%; height:115px; object-fit:cover; display:block; }
+.food-card-body { padding:10px 13px 14px; }
+.food-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; }
+.food-zh { font-size:11px; color:var(--brown2); }
+.food-price { font-size:12px; color:var(--coral); font-weight:700; margin-top:5px; }
+
+/* ══ BADGE ══ */
+.badge { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700; padding:3px 10px; border-radius:10px; }
+.badge-night { background:#15213A; color:#FFD700; }
+.badge-free { background:#E8F5E9; color:#2E7D32; border:1px solid #A5D6A7; }
+.badge-must { background:#FFF3E0; color:#D84315; border:1px solid #FFCC80; }
+.badge-early { background:#E3F2FD; color:#1565C0; border:1px solid #90CAF9; }
+
+/* ══ TIPS ══ */
+.tips-section { background:var(--brown); border-radius:24px; padding:30px; margin-top:38px; }
+.tips-title { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--gold2); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.tip { display:flex; gap:14px; margin-bottom:20px; align-items:flex-start; }
+.tip-icon { font-size:24px; flex-shrink:0; margin-top:1px; }
+.tip-text { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); }
+.tip-text strong { color:var(--gold2); }
+
+/* ══ MAPS BTN ══ */
+.maps-btn { display:inline-flex; align-items:center; gap:6px; background:var(--coral); color:white; text-decoration:none; font-size:12px; font-weight:700; padding:7px 16px; border-radius:22px; margin-top:14px; }
+
+/* ══ FOOTER ══ */
+.day-footer { display:flex; justify-content:space-between; margin-top:36px; }
+.day-footer a { display:inline-flex; align-items:center; gap:8px; background:var(--brown2); color:var(--gold2); text-decoration:none; font-size:14px; font-weight:700; padding:12px 24px; border-radius:28px; }
+
+/* TIMELINE ACCENT */
+.time-block { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.time-dot { width:10px; height:10px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+
+@media(max-width:600px){
+  .hero{height:340px;} .hero-title{font-size:36px;} .content{padding:20px 18px;} .hero-content{left:22px;right:22px;bottom:26px;} .date-tag{right:22px;top:22px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shanghai_-_Yu_Garden_-_0035.jpg/960px-Shanghai_-_Yu_Garden_-_0035.jpg" alt="Yu Garden Shanghai" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;">
+  <div class="hero-overlay"></div>
+  <div class="date-tag">📅 อาทิตย์ที่ 29 มีนาคม 2026</div>
+  <div class="hero-content">
+    <div class="day-pill">🌿 DAY 2 · OLD SHANGHAI</div>
+    <div class="hero-title">Yu Garden &amp;<br>French Concession</div>
+    <div class="hero-sub">豫园 · 法租界 · 外滩之夜</div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<div class="day-nav">
+  <a href="shanghai_day1.html">◀ Day 1</a>
+  <span class="center">🇨🇳 SHANGHAI 2026</span>
+  <a href="shanghai_day3.html">Day 3 ▶</a>
+</div>
+
+<div class="content">
+
+  <!-- SUMMARY -->
+  <div class="summary-box">
+    <div class="sum-item"><span class="sum-icon">🏯</span> Yu Garden เช้าตรู่</div>
+    <div class="sum-item"><span class="sum-icon">🥟</span> ชิมขนมย่านเก่า</div>
+    <div class="sum-item"><span class="sum-icon">🌳</span> French Concession บ่าย</div>
+    <div class="sum-item"><span class="sum-icon">🌙</span> The Bund ยามค่ำคืน</div>
+  </div>
+
+  <div class="sec-head">แผนการเดินทางประจำวัน · Day Schedule</div>
+
+  <!-- ── STOP 1: YU GARDEN ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">1</div>
+      <div class="stop-meta">
+        <div class="stop-time">
+          🌅 08:00 น. · Morning
+          <span class="badge badge-early">🌸 ไปก่อนฝูงชน</span>
+          <span class="badge badge-must">⭐ Must See</span>
+        </div>
+        <div class="stop-name">Yu Garden (豫园)</div>
+        <div class="stop-name-th">สวนยู่หยวน · สวนราชสำนักสมัยราชวงศ์หมิง</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shanghai_-_Yu_Garden_-_0035.jpg/960px-Shanghai_-_Yu_Garden_-_0035.jpg" alt="Yu Garden Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">สวนจีนคลาสสิกที่งดงามที่สุดแห่งหนึ่งในเซี่ยงไฮ้ สร้างในสมัยราชวงศ์หมิงเมื่อกว่า 400 ปีก่อน ภายในประกอบด้วยศาลา บ่อน้ำ สวนหิน และสะพานซิกแซกอันโด่งดัง เนื้อที่กว่า 20,000 ตร.ม. รู้สึกเหมือนหลุดเข้าสู่จีนโบราณกลางใจเมืองเซี่ยงไฮ้</p>
+      <div class="highlight-green">🌸 <strong>ทำไมต้องไปเช้า?</strong> หลัง 10:00 น. นักท่องเที่ยวจะแน่นมาก โดยเฉพาะวันอาทิตย์ การไปก่อน 08:30 น. ทำให้ได้บรรยากาศงามๆ ถ่ายรูปสวยโดยไม่มีคนเยอะ แถมแสงยามเช้ายังสวยเหลือเกิน</div>
+      <span class="th-label">💰 ค่าเข้าชม :</span>
+      <p class="stop-desc">ค่าเข้า ~¥40 (ราว 200 บาท) · เปิด 08:30–17:00 น.</p>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l14">🔵 Line 14 — สถานี Yuyuan Garden (豫园站)</span>
+        <span class="pill-walk pill">🚶 เดิน ~5 นาที</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~25 นาที</span> <span style="font-weight:400;">(Line 14 + เดิน 5 นาที จากโรงแรม)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Yu+Garden+Shanghai" target="_blank">📍 Google Maps — Yu Garden</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 2: YU BAZAAR ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">2</div>
+      <div class="stop-meta">
+        <div class="stop-time">🛍️ 10:00 น. · Mid Morning</div>
+        <div class="stop-name">Yu Bazaar &amp; Old Town Snacks</div>
+        <div class="stop-name-th">ตลาดเก่าย่านยู่หยวน · ชิมขนมพื้นเมืองดั้งเดิม</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Shanghai_-_Yu_Garden_-_0035.jpg/960px-Shanghai_-_Yu_Garden_-_0035.jpg" alt="Yu Garden Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">โดยรอบสวนยู่หยวนเต็มไปด้วยตลาดเก่าแก่สุดคึกคัก มีร้านขายของที่ระลึก ผ้าไหม เครื่องชา และสินค้าจีนดั้งเดิม บรรยากาศอาคารทรงหมิงและชิงผสมกับกลิ่นหอมของขนมหวานดึงดูดใจอย่างยิ่ง อย่าลืมแวะชิม <strong>Shengjianbao (生煎包)</strong> ที่ร้าน Xiao Yang's!</p>
+      <div class="highlight">🥟 <strong>ร้านแนะนำ:</strong> <strong>Nanxiang Steamed Bun Restaurant (南翔馒头店)</strong> ร้านเซียวหลงเปาตำนานอายุกว่า 100 ปี ตั้งอยู่ใกล้ศาลากลางบ่อน้ำ — อาจต้องรอคิว แต่คุ้มค่ามากๆ</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill-walk pill">🚶 เดินต่อจาก Yu Garden ~3 นาที</span>
+      </div>
+    </div>
+    <div class="food-box">
+      <div class="food-box-title">🍴 ของกินย่านยู่หยวน · Must-Try Snacks</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/A_Xiaolongbao_from_The_Modern_Shanghai.jpg/480px-A_Xiaolongbao_from_The_Modern_Shanghai.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Xiaolongbao (ร้าน Nanxiang)</div>
+            <div class="food-zh">南翔小笼包 · ตำนาน 100 ปี</div>
+            <div class="food-price">~¥32–55 / ชุด</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Pumpkin_tangyuan_%28%E6%B1%A4%E5%9C%86%29_with_red_bean_baste_and_black_sesame_fillings.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Tangyuan</div>
+            <div class="food-zh">汤圆 · บัวลอยแบบจีน</div>
+            <div class="food-price">~¥15–20 / ชาม</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Baozi_Chengdu.JPG/480px-Baozi_Chengdu.JPG">
+          <div class="food-card-body">
+            <div class="food-name">Sesame Flatbread</div>
+            <div class="food-zh">芝麻烧饼 · ขนมงาอบ</div>
+            <div class="food-price">~¥8–12 ชิ้น</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STOP 3: FRENCH CONCESSION ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">3</div>
+      <div class="stop-meta">
+        <div class="stop-time">🌿 13:00 น. · Afternoon</div>
+        <div class="stop-name">The French Concession (法租界)</div>
+        <div class="stop-name-th">ย่านสัมปทานฝรั่งเศส · ถนนซากุระและวิลล่าสวยงาม</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Street_View_of_Hengshan_Rd..JPG/960px-Street_View_of_Hengshan_Rd..JPG" alt="French Concession Wukang Road" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ย่านเก่าแก่สุดโรแมนติกของเซี่ยงไฮ้ที่เคยเป็นเขตสัมปทานฝรั่งเศสในอดีต ถนน Wukang Road (武康路) ที่เรียงรายด้วยต้นไม้ใหญ่ วิลล่าอาร์ต เดโค และคาเฟ่ชิคๆ เดินเล่นช้าๆ แวะถ่ายรูปหน้าบ้านเก่า ดื่มกาแฟ หรือช้อปปิ้งบูติกท้องถิ่นสุดน่ารัก</p>
+      <div class="highlight">🌳 <strong>ถนนที่สวยที่สุด:</strong> <strong>Wukang Road (武康路)</strong> — ถนนต้นไม้โค้งแบบยุโรป ผสมกับวิลล่าเก่าสไตล์ฝรั่งเศส เป็น Instagram spot ที่ขึ้นชื่อที่สุดในเซี่ยงไฮ้ ปลายมีนาคมอากาศดีมาก ต้นไม้เริ่มผลิใบสีเขียวสด</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l10">🟣 Line 10 — สถานี Xintiandi (新天地)</span>
+        <span class="pill l7">🟠 Line 7 — สถานี Changshu Road (常熟路)</span>
+        <span class="pill-taxi pill">🚕 DiDi จาก Yu Garden ~¥25</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~35 นาที</span> <span style="font-weight:400;">(Line 10 → Line 7 หรือ DiDi ~20 นาที)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Wukang+Road+Shanghai+French+Concession" target="_blank">📍 Google Maps — Wukang Road</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 4: XINTIANDI COFFEE ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">4</div>
+      <div class="stop-meta">
+        <div class="stop-time">☕ 15:30 น. · Afternoon Break</div>
+        <div class="stop-name">Xintiandi (新天地) — Afternoon Coffee</div>
+        <div class="stop-name-th">ซินเทียนตี้ · ชิคูเหมินเก่าผสมร้านสมัยใหม่</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Xintiandi5.jpg/960px-Xintiandi5.jpg" alt="Xintiandi Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ย่านอิฐแดงเก่าสไตล์ Shikumen (石库门) — สถาปัตยกรรมบ้านจีนผสมยุโรปที่ดัดแปลงมาเป็นร้านอาหาร คาเฟ่ และบูติกชั้นสูง เดินเล่นในตรอกซอกซอยอิฐแดง นั่งดื่มกาแฟหรือชาบ่ายในบรรยากาศเมืองเก่า เหมาะกับการพักขา</p>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill-walk pill">🚶 เดินต่อจาก French Concession ~15 นาที</span>
+        <span class="pill l10">🟣 Line 10 — สถานี Xintiandi (新天地)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STOP 5: THE BUND AT NIGHT ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">5</div>
+      <div class="stop-meta">
+        <div class="stop-time">🌇 18:30 น. · Golden Hour → Night
+          <span class="badge badge-night">🌙 ไฮไลต์ของทริป!</span>
+        </div>
+        <div class="stop-name">The Bund at Night (外滩夜景)</div>
+        <div class="stop-name-th">เดอะบันด์ยามค่ำคืน · วิวที่สวยที่สุดในเซี่ยงไฮ้</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bund_at_night_Shanghai.jpg/800px-Bund_at_night_Shanghai.jpg" alt="The Bund at Night Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">กลับมาที่เดอะบันด์อีกครั้ง แต่คราวนี้ตอนกลางคืน! ไฟประดับของอาคาร Art Deco ฝั่งตะวันตกและไฟ LED ของตึกระฟ้าผู่ตงฝั่งตรงข้ามสะท้อนลงบนแม่น้ำฮวงผู่อย่างงดงาม จุดที่ดีที่สุดในการถ่ายรูปคือ <strong>Bund Observation Deck</strong> หรือ <strong>Bund Bull Statue</strong> ช่วง 19:00–21:00 น.</p>
+      <div class="highlight">📸 <strong>เคล็ดลับถ่ายรูป:</strong> ใช้ <strong>mode Night Portrait</strong> บนมือถือ ตั้งขาตั้งกล้อง (หรือพิงราวเพื่อกันสั่น) ถ่ายช่วง <strong>18:30–19:30 น. (Blue Hour)</strong> ก่อนที่ท้องฟ้าจะมืดสนิท — แสงส้มฟ้าผสมไฟตึก สวยที่สุด!</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l2">🟢 Line 2</span>
+        <span class="pill l10">🟣 Line 10</span>
+        <span class="pill-walk pill">🚶 สถานี East Nanjing Road → 5 นาที</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~20 นาที</span> <span style="font-weight:400;">(Line 10 → East Nanjing Road จาก Xintiandi)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=The+Bund+Night+Shanghai" target="_blank">📍 Google Maps — The Bund</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 6: DINNER ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">6</div>
+      <div class="stop-meta">
+        <div class="stop-time">🍽️ 19:30 น. · Dinner</div>
+        <div class="stop-name">Dinner near The Bund / Xintiandi</div>
+        <div class="stop-name-th">มื้อเย็นสไตล์เซี่ยงไฮ้คลาสสิก</div>
+      </div>
+    </div>
+    <div class="stop-body">
+      <span class="th-label">📍 ร้านอาหารแนะนำ :</span>
+      <p class="stop-desc">แนะนำ <strong>Mr &amp; Mrs Bund</strong> สำหรับ modern Shanghai cuisine ริมแม่น้ำ หรือ <strong>Yè Shanghai (夜上海)</strong> ที่ Xintiandi สำหรับอาหารเซี่ยงไฮ้คลาสสิกในบรรยากาศหรูหราแต่ไม่ต้องจ่ายแพง</p>
+    </div>
+    <div class="food-box">
+      <div class="food-box-title">🍴 เมนูแนะนำมื้อเย็น · Shanghai Dinner Classics</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Charsiu.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Red Braised Pork</div>
+            <div class="food-zh">红烧肉 · หมูตุ๋นซีอิ๊วหวาน</div>
+            <div class="food-price">~¥48–68 / จาน</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Baozi_Chengdu.JPG/480px-Baozi_Chengdu.JPG">
+          <div class="food-card-body">
+            <div class="food-name">Drunken Chicken</div>
+            <div class="food-zh">醉鸡 · ไก่หมักเหล้าจีน</div>
+            <div class="food-price">~¥38–55 / จาน</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/A_Xiaolongbao_from_The_Modern_Shanghai.jpg/480px-A_Xiaolongbao_from_The_Modern_Shanghai.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Crab Roe Xiaolongbao</div>
+            <div class="food-zh">蟹粉小笼 · เซียวหลงเปาไข่ปู</div>
+            <div class="food-price">~¥58–88 / ชุด</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TIPS ══ -->
+  <div class="tips-section">
+    <div class="tips-title">💡 เคล็ดลับวันที่ 2 · Day 2 Tips</div>
+    <div class="tip">
+      <span class="tip-icon">🏯</span>
+      <div class="tip-text"><strong>Yu Garden:</strong> ไปก่อน 09:00 น. ดีที่สุด — วันอาทิตย์จะแน่นมากหลัง 10:30 น. ซื้อตั๋วออนไลน์ผ่าน WeChat/Alipay เพื่อข้ามคิวได้เลย</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌳</span>
+      <div class="tip-text"><strong>French Concession:</strong> ย่านที่สนุกที่สุดสำหรับ "เดินเล่นไร้จุดหมาย" — <strong>Wukang Road, Anfu Road, Fuxing Road</strong> เป็นถนนที่สวยที่สุด ปลายมีนาคมดอกไม้เริ่มบาน บรรยากาศดีมาก</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌙</span>
+      <div class="tip-text"><strong>The Bund ยามค่ำ:</strong> Blue Hour คือ <strong>18:30–19:15 น.</strong> ท้องฟ้าสีน้ำเงินเข้มผสมกับไฟตึก — ช่วงที่สวยที่สุดสำหรับถ่ายรูป ก่อนหน้านี้ (Sunset ~18:00) ก็สวยเช่นกัน</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🚕</span>
+      <div class="tip-text"><strong>DiDi (滴滴)</strong> สะดวกกว่าแท็กซี่มาก — ดาวน์โหลด App เชื่อมบัตรต่างชาติหรือ Alipay แล้วเรียกรถสะดวก ราคาเปิดเผยก่อนขึ้นรถ ไม่ต้องพูดภาษาจีน</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="day-footer">
+    <a href="shanghai_day1.html">◀ Day 1</a>
+    <a href="shanghai_day3.html">Day 3 — Zhujiajiao ▶</a>
+  </div>
+  <div style="text-align:center;padding:28px 0 8px;color:var(--brown2);font-size:12px;opacity:0.55;letter-spacing:1px;">
+    🇨🇳 Shanghai Family Trip · March 2026
+  </div>
+
+</div>
+</body>
+</html>

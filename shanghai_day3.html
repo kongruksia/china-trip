@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 — Suzhou Day Trip &amp; Tianzifang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --cream: #FDF6EC;
+  --cream2: #F5E9D0;
+  --gold: #C9922C;
+  --gold2: #E8C96C;
+  --gold-pale: #FEF3DC;
+  --coral: #D96E4A;
+  --coral2: #F2AA85;
+  --brown: #4A2C1A;
+  --brown2: #7B4E38;
+  --text: #2C1810;
+  --text2: #6B4033;
+  --white: #FFFFFF;
+  --shadow: 0 4px 24px rgba(44,24,16,0.10);
+  --shadow2: 0 10px 36px rgba(44,24,16,0.18);
+  --blue: #1565C0;
+  --teal: #00695C;
+}
+body { font-family:'Noto Sans Thai','Inter',sans-serif; background:var(--cream); color:var(--text); max-width:820px; margin:0 auto; padding-bottom:70px; }
+
+/* ══ HERO ══ */
+.hero { position:relative; height:460px; overflow:hidden; background:linear-gradient(135deg,#0d2535,#1a4a5a,#0a2030); }
+.hero img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.88; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(5,15,25,0.08) 0%,rgba(5,15,25,0.38) 55%,rgba(5,15,25,0.88) 100%); }
+.hero-content { position:absolute; bottom:38px; left:38px; right:38px; }
+.day-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#1E88E5,#1255AA); color:white; font-size:11px; font-weight:800; letter-spacing:3px; text-transform:uppercase; padding:8px 22px; border-radius:30px; margin-bottom:14px; box-shadow:0 5px 18px rgba(30,100,200,0.55); }
+.date-tag { position:absolute; top:28px; right:38px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); color:white; font-size:13px; font-weight:500; padding:8px 18px; border-radius:22px; border:1px solid rgba(255,255,255,0.28); }
+.hero-title { font-family:'Playfair Display',serif; font-size:50px; font-weight:900; color:white; line-height:1.05; text-shadow:0 4px 20px rgba(0,0,0,0.6); }
+.hero-sub { color:rgba(255,255,255,0.78); font-size:15px; font-weight:400; margin-top:10px; letter-spacing:3px; text-transform:uppercase; }
+
+/* ══ NAV BAR ══ */
+.day-nav { background:var(--brown); padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+.day-nav a { color:var(--gold2); text-decoration:none; font-size:13px; font-weight:700; display:flex; align-items:center; gap:6px; }
+.day-nav .center { color:rgba(255,255,255,0.45); font-size:12px; letter-spacing:2px; }
+
+/* ══ CONTENT ══ */
+.content { padding:36px 30px; }
+
+/* ══ SUMMARY BOX ══ */
+.summary-box { background:linear-gradient(135deg,var(--gold-pale),#FFFCF5); border:1.5px solid var(--gold2); border-radius:20px; padding:22px 26px; margin-bottom:38px; display:flex; gap:18px; flex-wrap:wrap; align-items:center; }
+.sum-item { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--brown2); font-weight:500; }
+.sum-icon { font-size:20px; }
+
+/* ══ SECTION HEADER ══ */
+.sec-head { font-size:10px; font-weight:800; letter-spacing:4px; color:var(--coral); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.sec-head::after { content:''; flex:1; height:1px; background:var(--coral2); opacity:0.35; }
+
+/* ══ DAY TRIP BANNER ══ */
+.daytrip-banner { background:linear-gradient(135deg,#E3F2FD,#BBDEFB); border:2px solid #90CAF9; border-radius:18px; padding:20px 24px; margin-bottom:30px; display:flex; align-items:center; gap:16px; }
+.daytrip-icon { font-size:40px; flex-shrink:0; }
+.daytrip-content { flex:1; }
+.daytrip-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#0D47A1; margin-bottom:6px; }
+.daytrip-desc { font-size:14px; color:#1565C0; line-height:1.6; }
+
+/* ══ STOP CARDS ══ */
+.stop { background:var(--white); border-radius:24px; box-shadow:var(--shadow); margin-bottom:30px; overflow:hidden; transition:box-shadow 0.3s,transform 0.3s; }
+.stop:hover { box-shadow:var(--shadow2); transform:translateY(-3px); }
+.stop-top { padding:24px 24px 0 24px; display:flex; gap:18px; align-items:flex-start; }
+.num-circle { width:48px; height:48px; flex-shrink:0; background:linear-gradient(135deg,#D4A030,#9E6E18); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:22px; font-weight:800; box-shadow:0 5px 16px rgba(180,130,40,0.45); margin-top:2px; font-family:'Playfair Display',serif; }
+.stop-meta { flex:1; }
+.stop-time { font-size:11px; font-weight:700; color:var(--brown2); letter-spacing:1.5px; margin-bottom:6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.stop-name { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--text); line-height:1.12; margin-bottom:4px; }
+.stop-name-th { font-size:14px; color:var(--brown2); font-weight:400; }
+.stop-img { width:100%; height:240px; object-fit:cover; display:block; margin-top:18px; }
+.stop-img-placeholder { width:100%; height:240px; display:flex; align-items:center; justify-content:center; font-size:80px; margin-top:18px; }
+.stop-body { padding:20px 24px 24px 24px; }
+.th-label { font-size:11px; font-weight:800; color:var(--coral); letter-spacing:1px; text-transform:uppercase; margin-top:16px; margin-bottom:8px; display:block; }
+.stop-desc { font-size:14.5px; line-height:1.78; color:var(--text2); }
+
+/* ══ TRANSPORT PILLS ══ */
+.transport-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.pill { display:inline-flex; align-items:center; gap:5px; padding:6px 14px; border-radius:22px; font-size:11px; font-weight:700; }
+.pill-walk { background:var(--cream2); color:var(--brown2); border:1px solid #D4B98A; }
+.pill-taxi { background:#FFF9E0; color:#8B6500; border:1px solid #F0D060; }
+.pill-bus { background:#E8F5E9; color:#2E7D32; border:1px solid #A5D6A7; }
+.l2 { background:#007A3D; color:white; }
+.l9 { background:#009A97; color:white; }
+.l10 { background:#8E44AD; color:white; }
+.l13 { background:#D35400; color:white; }
+.l17 { background:#922B21; color:white; }
+
+/* ══ HIGHLIGHT BOX ══ */
+.highlight { background:linear-gradient(135deg,#FEF9EC,#FFF5DC); border:1.5px solid #E0C870; border-radius:14px; padding:14px 18px; margin-top:14px; font-size:14px; line-height:1.68; color:var(--brown2); }
+.highlight strong { color:#A07020; }
+.highlight-blue { background:linear-gradient(135deg,#E8F4FF,#DBEEFF); border:1.5px solid #90CAF9; border-radius:14px; padding:14px 18px; margin-top:14px; font-size:14px; line-height:1.68; color:#1A3F6A; }
+.highlight-blue strong { color:#0D47A1; }
+
+/* ══ FOOD BOX ══ */
+.food-box { background:linear-gradient(135deg,#FFF8F0,#FFEDDB); border-top:1.5px solid #F0CEAD; padding:20px 24px 24px 24px; }
+.food-box-title { font-size:10px; font-weight:800; letter-spacing:3px; color:var(--coral); text-transform:uppercase; margin-bottom:16px; }
+.food-grid { display:flex; gap:14px; flex-wrap:wrap; }
+.food-card { flex:1; min-width:140px; max-width:210px; background:white; border-radius:16px; overflow:hidden; box-shadow:0 3px 12px rgba(0,0,0,0.09); }
+.food-card img { width:100%; height:115px; object-fit:cover; display:block; }
+.food-card-body { padding:10px 13px 14px; }
+.food-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; }
+.food-zh { font-size:11px; color:var(--brown2); }
+.food-price { font-size:12px; color:var(--coral); font-weight:700; margin-top:5px; }
+
+/* ══ BADGE ══ */
+.badge { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700; padding:3px 10px; border-radius:10px; }
+.badge-night { background:#15213A; color:#FFD700; }
+.badge-free { background:#E8F5E9; color:#2E7D32; border:1px solid #A5D6A7; }
+.badge-must { background:#FFF3E0; color:#D84315; border:1px solid #FFCC80; }
+.badge-daytrip { background:#E3F2FD; color:#0D47A1; border:1px solid #90CAF9; }
+.badge-art { background:#F3E5F5; color:#6A1B9A; border:1px solid #CE93D8; }
+
+/* ══ TIPS ══ */
+.tips-section { background:var(--brown); border-radius:24px; padding:30px; margin-top:38px; }
+.tips-title { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--gold2); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.tip { display:flex; gap:14px; margin-bottom:20px; align-items:flex-start; }
+.tip-icon { font-size:24px; flex-shrink:0; margin-top:1px; }
+.tip-text { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); }
+.tip-text strong { color:var(--gold2); }
+
+/* ══ MAPS BTN ══ */
+.maps-btn { display:inline-flex; align-items:center; gap:6px; background:var(--coral); color:white; text-decoration:none; font-size:12px; font-weight:700; padding:7px 16px; border-radius:22px; margin-top:14px; }
+
+/* ══ BOAT CARD ══ */
+.boat-card { display:flex; gap:14px; background:linear-gradient(135deg,#E0F4FF,#CCE8FF); border-radius:14px; padding:16px 18px; margin-top:14px; align-items:flex-start; }
+.boat-icon { font-size:32px; flex-shrink:0; }
+.boat-info { flex:1; font-size:14px; color:#1A3F6A; line-height:1.65; }
+.boat-info strong { color:#0D47A1; display:block; margin-bottom:4px; font-size:15px; }
+
+/* ══ FOOTER ══ */
+.day-footer { display:flex; justify-content:space-between; margin-top:36px; }
+.day-footer a { display:inline-flex; align-items:center; gap:8px; background:var(--brown2); color:var(--gold2); text-decoration:none; font-size:14px; font-weight:700; padding:12px 24px; border-radius:28px; }
+
+@media(max-width:600px){
+  .hero{height:340px;} .hero-title{font-size:36px;} .content{padding:20px 18px;} .hero-content{left:22px;right:22px;bottom:26px;} .date-tag{right:22px;top:22px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/China_-_Suzhou_-_Garden_of_Cultivation_-_Ravine.jpg/800px-China_-_Suzhou_-_Garden_of_Cultivation_-_Ravine.jpg" alt="Suzhou Classical Garden" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;">
+  <div class="hero-overlay"></div>
+  <div class="date-tag">📅 จันทร์ที่ 30 มีนาคม 2026</div>
+  <div class="hero-content">
+    <div class="day-pill">🚄 DAY 3 · SUZHOU + ART</div>
+    <div class="hero-title">Suzhou<br>&amp; Tianzifang</div>
+    <div class="hero-sub">苏州 · 田子坊 · 新天地</div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<div class="day-nav">
+  <a href="shanghai_day2.html">◀ Day 2</a>
+  <span class="center">🇨🇳 SHANGHAI 2026</span>
+  <a href="shanghai_day4.html">Day 4 ▶</a>
+</div>
+
+<div class="content">
+
+  <!-- SUMMARY -->
+  <div class="summary-box">
+    <div class="sum-item"><span class="sum-icon">🚄</span> Bullet Train 30 นาที!</div>
+    <div class="sum-item"><span class="sum-icon">🌿</span> สวน UNESCO โบราณ 600 ปี</div>
+    <div class="sum-item"><span class="sum-icon">🛶</span> Pingjiang Road ริมคลอง</div>
+    <div class="sum-item"><span class="sum-icon">🎨</span> Tianzifang อาร์ต</div>
+    <div class="sum-item"><span class="sum-icon">🍷</span> Xintiandi มื้อเย็น</div>
+  </div>
+
+  <!-- DAY TRIP BANNER -->
+  <div class="daytrip-banner">
+    <div class="daytrip-icon">🗺️</div>
+    <div class="daytrip-content">
+      <div class="daytrip-title">Day Trip — Suzhou (苏州) · "Venice of the East"</div>
+      <div class="daytrip-desc">นั่ง Bullet Train เพียง 30 นาทีสู่เมืองโบราณ 2,500 ปี สวนจีน UNESCO ที่งดงามที่สุดในโลก คลองโบราณสีเขียว และถนน Pingjiang อันโรแมนติก — แล้วกลับมา Tianzifang ยามเย็น!</div>
+    </div>
+  </div>
+
+  <div class="sec-head">แผนการเดินทางประจำวัน · Day Schedule</div>
+
+  <!-- ── STOP 1: DEPART TO SUZHOU ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">1</div>
+      <div class="stop-meta">
+        <div class="stop-time">🚄 08:00 น. · Depart by Bullet Train
+          <span class="badge" style="background:#E3F2FD;color:#1565C0;border:1px solid #90CAF9;">🎫 จองล่วงหน้า!</span>
+        </div>
+        <div class="stop-name">Hongqiao Station → Suzhou Station</div>
+        <div class="stop-name-th">ออกเดินทางสู่เมืองสวนโบราณ · สุโจว</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/20230328_Skyline_of_Suzhou_High-speed_Rail_New_Town.jpg/800px-20230328_Skyline_of_Suzhou_High-speed_Rail_New_Town.jpg" alt="Suzhou High Speed Rail" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 รายละเอียดการเดินทาง :</span>
+      <p class="stop-desc">นั่ง Bullet Train (G-train) จาก <strong>Shanghai Hongqiao Railway Station (上海虹桥站)</strong> ไปยัง <strong>Suzhou Station (苏州站)</strong> ใช้เวลาเพียง <strong>~30 นาที</strong> ถึง Suzhou เมืองโบราณ 2,500 ปีที่ได้รับสมญานามว่า "Venice of the East" — เมืองแห่งสวนจีน คลองโบราณ และไหมอันลือชื่อ</p>
+      <div class="highlight-blue">
+        🎫 <strong>วิธีซื้อตั๋ว:</strong> ดาวน์โหลด <strong>Trip.com</strong> หรือ <strong>12306.cn</strong> ซื้อล่วงหน้า 1–3 วัน ราคา <strong>¥35–75/คน ไป-กลับ</strong> ใช้ Passport ลงทะเบียน รถออกทุก 15–30 นาที ไม่ต้องกังวลเรื่องตั๋วหมด!
+      </div>
+      <span class="th-label">🚄 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill maglev" style="background:#1565C0;">🚄 G-Train Hongqiao → Suzhou (~30 นาที)</span>
+        <span class="pill" style="background:#4CAF50;color:white;">💰 ~¥35–75 / คน ไป-กลับ</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~30 นาที</span> <span style="font-weight:400;">(เร็วกว่าไป Zhujiajiao เดิมมาก!)</span></div>
+    </div>
+  </div>
+
+  <!-- ── STOP 2: HUMBLE ADMINISTRATOR'S GARDEN ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">2</div>
+      <div class="stop-meta">
+        <div class="stop-time">
+          🌿 09:00 — 11:30 น. · Morning in Suzhou
+          <span class="badge badge-must">🏆 UNESCO</span>
+        </div>
+        <div class="stop-name">Humble Administrator's Garden (拙政园)</div>
+        <div class="stop-name-th">สวนผู้ปกครองถ่อมตน · สวนจีนที่งดงามที่สุดในโลก</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/China_-_Suzhou_-_Garden_of_Cultivation_-_Ravine.jpg/800px-China_-_Suzhou_-_Garden_of_Cultivation_-_Ravine.jpg" alt="Suzhou Classical Garden" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">สวนจีนคลาสสิกที่ใหญ่ที่สุดในเมือง Suzhou และได้รับการขึ้นทะเบียนเป็น <strong>มรดกโลก UNESCO</strong> สร้างขึ้นในศตวรรษที่ 16 สมัยราชวงศ์หมิง ภายในเต็มไปด้วยสระน้ำสะท้อนแสง ศาลาโบราณ สะพานหิน สวนหิน และต้นไม้ที่จัดวางอย่างงดงาม — ทุกมุมคือภาพวาดที่มีชีวิต</p>
+      <div class="highlight">🌸 <strong>จุดห้ามพลาด:</strong> <strong>Fragrant Isle Pavilion</strong> (ศาลากลางน้ำ) · <strong>Mandarin Duck Hall</strong> · <strong>Listening to the Rain Pavilion</strong> — ถ่ายรูปสวยมากทุกฤดู โดยเฉพาะปลายมีนาคมที่ดอกไม้เริ่มบาน!</div>
+      <div class="highlight" style="margin-top:10px;background:#E8F5E9;border-color:#A5D6A7;">🌿 <strong>เคล็ดลับ:</strong> ซื้อตั๋วออนไลน์ล่วงหน้าใน <strong>Trip.com</strong> หลีกเลี่ยงคิวยาว · มาก่อน 09:30 น. เพื่อถ่ายรูปก่อนฝูงชน · ใช้เวลาสำรวจ ~2 ชั่วโมง</div>
+      <div style="margin-top:12px;font-size:13px;color:#888;">💰 ค่าเข้า: ¥90/คน · ⏱️ ใช้เวลา: ~2 ชั่วโมง · เปิด 07:30 น.</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill-walk pill">🚶 เดิน ~15 นาที จาก Suzhou Station หรือ Taxi ¥15–20</span>
+      </div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Humble+Administrator+Garden+Suzhou+China" target="_blank">📍 Google Maps — Humble Administrator's Garden</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 3: PINGJIANG ROAD ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">3</div>
+      <div class="stop-meta">
+        <div class="stop-time">
+          🛶 12:00 — 14:30 น. · Lunch &amp; Canal Walk
+          <span class="badge" style="background:#E3F2FD;color:#1565C0;border:1px solid #90CAF9;">📸 ถ่ายรูปสวยมาก</span>
+        </div>
+        <div class="stop-name">Pingjiang Road (平江路)</div>
+        <div class="stop-name-th">ถนนพิงเจียง · ถนนคลองโบราณโรแมนติกที่สุดในจีน</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/%E4%B8%9C%E6%96%B9%E4%B9%8B%E9%97%A81.jpg/800px-%E4%B8%9C%E6%96%B9%E4%B9%8B%E9%97%A81.jpg" alt="Suzhou Canal Street" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ถนนสายประวัติศาสตร์ริมคลองที่เก่าแก่กว่า 2,500 ปี เดินเลียบคลองใสใต้ร่มเงาต้นไม้ ผ่านบ้านปูนขาวโบราณ ร้านน้ำชาสไตล์จีน คาเฟ่เล็กๆ และร้านหัตถกรรมท้องถิ่น — บรรยากาศสงบ โรแมนติก สวยงามอย่างไม่มีที่สิ้นสุด ทานข้าวกลางวันที่ร้านริมน้ำ ชิมอาหาร Suzhou ต้นตำรับ</p>
+      <div class="highlight">🍜 <strong>อาหาร Suzhou ที่ต้องลอง:</strong> <strong>Bifengfang Noodles (碧凤坊面)</strong> บะหมี่น้ำซุปใสรสเข้มข้น · <strong>Suzhou Crab Paste</strong> · <strong>Rose Pastry (玫瑰饼)</strong> ขนมดอกกุหลาบ — หาซื้อได้ตลอดถนน</div>
+      <div class="highlight" style="margin-top:10px;background:#FFF8E1;border-color:#FFD54F;">🛍️ <strong>ช้อปปิ้งที่แนะนำ:</strong> <strong>Suzhou Silk</strong> ไหมแท้คุณภาพดีราคาสมเหตุสมผล · งาน <strong>Embroidery</strong> ปักมือ · ชา <strong>Biluochun (碧螺春)</strong> ชาเขียวชั้นดีของ Suzhou</div>
+      <div style="margin-top:12px;font-size:13px;color:#888;">⏱️ ใช้เวลา: ~2–2.5 ชั่วโมง (รวมทานข้าวกลางวัน) · เข้าฟรี</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill-walk pill">🚶 เดิน ~15–20 นาที จาก Humble Administrator's Garden หรือ Taxi ¥15</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~15 นาที</span> <span style="font-weight:400;">(เดินจากสวน หรือ Taxi สั้นๆ)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Pingjiang+Road+Suzhou+China" target="_blank">📍 Google Maps — Pingjiang Road</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 4: RETURN TO SHANGHAI ── -->
+  <div class="stop" style="background:linear-gradient(135deg,#E3F2FD,#BBDEFB);border:1px solid #90CAF9;">
+    <div class="stop-top">
+      <div class="num-circle" style="background:#1565C0;">4</div>
+      <div class="stop-meta">
+        <div class="stop-time">🚄 15:00 — 16:00 น. · Return Journey</div>
+        <div class="stop-name">กลับ Shanghai · Suzhou → Hongqiao</div>
+        <div class="stop-name-th">นั่ง Bullet Train กลับเซี่ยงไฮ้ · พร้อมพักผ่อนก่อนมื้อเย็น</div>
+      </div>
+    </div>
+    <div class="stop-body">
+      <p class="stop-desc" style="color:#1A3F6A;">ออกเดินทางจาก Suzhou Station ขึ้น G-train กลับ Shanghai Hongqiao ใช้เวลา <strong>~30 นาที</strong> ถึงเซี่ยงไฮ้ประมาณ <strong>15:30–16:00 น.</strong> พักผ่อนที่โรงแรมสั้นๆ ก่อนออกไป Tianzifang ยามเย็น</p>
+      <div class="transport-row">
+        <span class="pill maglev" style="background:#1565C0;">🚄 G-Train Suzhou → Hongqiao (~30 นาที)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STOP 5: TIANZIFANG ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">5</div>
+      <div class="stop-meta">
+        <div class="stop-time">🎨 17:00 น. · Evening Art Crawl
+          <span class="badge badge-art">🎭 อาร์ต &amp; วินเทจ</span>
+        </div>
+        <div class="stop-name">Tianzifang (田子坊)</div>
+        <div class="stop-name-th">เทียนจื่อฝาง · ตรอกซอกซอยศิลปะสุดชิค</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Shanghai_Tianzifang_%E4%B8%8A%E6%B5%B7%E7%94%B0%E5%AD%90%E5%9D%8A_-_panoramio.jpg/960px-Shanghai_Tianzifang_%E4%B8%8A%E6%B5%B7%E7%94%B0%E5%AD%90%E5%9D%8A_-_panoramio.jpg" alt="Tianzifang Art Alley" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ย่านอาร์ตสุดคูลในซอกซอยบ้านเก่าสไตล์ Shikumen ดัดแปลงเป็น gallery ร้านของ handmade บูติกวินเทจ คาเฟ่ และบาร์เก๋ๆ ขนาดเล็ก เดินสำรวจตรอกที่วกวนไปมา ค้นพบร้านซ่อนตัวน่ารักๆ ในทุกมุม — เหมาะสำหรับช้อปปิ้งของที่ระลึกที่ไม่ซ้ำใคร</p>
+      <div class="highlight">🛍️ <strong>อะไรที่ควรซื้อ:</strong> ของ handmade ชิ้นเดียวในโลก, งาน ceramic จีน, ชาอูหลง/เมาตาน, ไปรษณียบัตรศิลป์, เสื้อผ้า vintage — ราคาสมเหตุสมผล ต่อรองได้บ้าง</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l9">🔵 Line 9 — สถานี Dapuqiao (打浦桥)</span>
+        <span class="pill-walk pill">🚶 เดิน ~8 นาที (~600m)</span>
+        <span class="pill-taxi pill">🚕 DiDi จากโรงแรม ~¥30</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~25 นาที</span> <span style="font-weight:400;">(metro Line 9 จากโรงแรมหรือ Hongqiao)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Tianzifang+Shanghai" target="_blank">📍 Google Maps — Tianzifang</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 6: XINTIANDI DINNER ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">6</div>
+      <div class="stop-meta">
+        <div class="stop-time">🍽️ 19:00 น. · Dinner at Xintiandi</div>
+        <div class="stop-name">Xintiandi Dinner (新天地)</div>
+        <div class="stop-name-th">ซินเทียนตี้ · อาหารเย็นในย่านอิฐแดงสุดชิค</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Shanghai_Tianzifang_%E4%B8%8A%E6%B5%B7%E7%94%B0%E5%AD%90%E5%9D%8A_-_panoramio.jpg/960px-Shanghai_Tianzifang_%E4%B8%8A%E6%B5%B7%E7%94%B0%E5%AD%90%E5%9D%8A_-_panoramio.jpg" alt="Tianzifang Art Alley" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ย่าน Xintiandi ผสมสถาปัตยกรรม Shikumen เก่าแก่กับร้านอาหาร boutique ร้านไวน์ และบาร์สไตล์ยุโรปในบรรยากาศที่ไม่เหมือนใคร เดินเล่นในลานกว้างยามค่ำ เลือกร้านอาหารตามอารมณ์ — มีให้เลือกตั้งแต่ Shanghai classic ไปจนถึงอาหารนานาชาติ</p>
+      <div class="highlight">🌟 <strong>แนะนำ:</strong> <strong>Yè Shanghai (夜上海)</strong> — Shanghai cuisine ระดับ fine dining ราคาสมเหตุสมผล · <strong>COMMUNE Social</strong> — tapas style · <strong>Lost Heaven (花马天堂)</strong> — อาหาร Yunnan สุดงดงาม</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l10">🟣 Line 10 — สถานี Xintiandi (新天地)</span>
+        <span class="pill l13">🟠 Line 13 — สถานี Xintiandi (新天地)</span>
+        <span class="pill-walk pill">🚶 เดินจาก Tianzifang ~20 นาที</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~12–15 นาที</span> <span style="font-weight:400;">(เดิน หรือ Line 10/13 หนึ่งสถานี)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Xintiandi+Shanghai" target="_blank">📍 Google Maps — Xintiandi</a>
+    </div>
+    <div class="food-box">
+      <div class="food-box-title">🍴 เมนูแนะนำ Xintiandi · Dinner Must-Try</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Charsiu.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Red Braised Pork Belly</div>
+            <div class="food-zh">红烧肉 · หมูสามชั้นตุ๋นซีอิ๊ว</div>
+            <div class="food-price">~¥48–78 / จาน</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Pork_Steamed_Wontons.jpg/480px-Pork_Steamed_Wontons.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Shanghai Stir-fry</div>
+            <div class="food-zh">本帮菜 · อาหารเซี่ยงไฮ้ดั้งเดิม</div>
+            <div class="food-price">~¥38–65 / จาน</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Baozi_Chengdu.JPG/480px-Baozi_Chengdu.JPG">
+          <div class="food-card-body">
+            <div class="food-name">Osmanthus Wine Cake</div>
+            <div class="food-zh">桂花糕 · ขนมดอกออสมัน</div>
+            <div class="food-price">~¥18–28 / ชุด</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TIPS ══ -->
+  <div class="tips-section">
+    <div class="tips-title">💡 เคล็ดลับวันที่ 3 · Day 3 Tips (Suzhou Edition)</div>
+    <div class="tip">
+      <span class="tip-icon">🎫</span>
+      <div class="tip-text"><strong>จองตั๋ว Bullet Train ล่วงหน้า!</strong> เปิด <strong>Trip.com</strong> ค้นหา "Shanghai Hongqiao → Suzhou" เลือก G-train รอบ 08:00–09:00 น. ราคา ~¥35–75/คน จ่ายด้วยบัตรเครดิตต่างชาติได้ — ตั๋วจะส่งเป็น QR code ในแอป</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌿</span>
+      <div class="tip-text"><strong>ซื้อตั๋ว Humble Administrator's Garden ออนไลน์!</strong> ซื้อผ่าน Trip.com หรือ Klook ล่วงหน้าเพื่อข้ามคิวซื้อตั๋วหน้างาน — วันหยุดคนแน่นมาก ค่าเข้า ¥90/คน</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🧵</span>
+      <div class="tip-text"><strong>ไหมซูโจว (Suzhou Silk):</strong> ของขึ้นชื่อที่ต้องซื้อ! ซื้อที่ <strong>Suzhou Silk Museum Shop</strong> (พิพิธภัณฑ์ไหมอย่างเป็นทางการ) รับประกันของแท้ ราคาดีกว่าตลาด ผ้าไหม ผ้าพันคอ ปลอกหมอนไหมมีให้เลือกหลากหลาย</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🎨</span>
+      <div class="tip-text"><strong>Tianzifang vs Xintiandi:</strong> Tianzifang คือย่าน <strong>bohemian อาร์ต</strong> ราคาถูกกว่า บรรยากาศท้องถิ่น · Xintiandi คือย่าน <strong>trendy upscale</strong> ราคาสูงขึ้น บรรยากาศยุโรป — สองที่ต่างกันมาก สนุกทั้งคู่!</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="day-footer">
+    <a href="shanghai_day2.html">◀ Day 2</a>
+    <a href="shanghai_day4.html">Day 4 — Final Day ▶</a>
+  </div>
+  <div style="text-align:center;padding:28px 0 8px;color:var(--brown2);font-size:12px;opacity:0.55;letter-spacing:1px;">
+    🇨🇳 Shanghai Family Trip · March 2026
+  </div>
+
+</div>
+</body>
+</html>

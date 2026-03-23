@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 — Shanghai: Arrival &amp; The Bund</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --cream: #FDF6EC;
+  --cream2: #F5E9D0;
+  --gold: #C9922C;
+  --gold2: #E8C96C;
+  --gold-pale: #FEF3DC;
+  --coral: #D96E4A;
+  --coral2: #F2AA85;
+  --brown: #4A2C1A;
+  --brown2: #7B4E38;
+  --text: #2C1810;
+  --text2: #6B4033;
+  --white: #FFFFFF;
+  --shadow: 0 4px 24px rgba(44,24,16,0.10);
+  --shadow2: 0 10px 36px rgba(44,24,16,0.18);
+}
+body { font-family:'Noto Sans Thai','Inter',sans-serif; background:var(--cream); color:var(--text); max-width:820px; margin:0 auto; padding-bottom:70px; }
+
+/* ══ HERO ══ */
+.hero { position:relative; height:460px; overflow:hidden; background:linear-gradient(135deg,#0d1b2a 0%,#1a2f42 60%,#0a1520 100%); }
+.hero img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.9; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(5,10,20,0.1) 0%, rgba(5,10,20,0.40) 55%, rgba(5,10,20,0.88) 100%); }
+.hero-content { position:absolute; bottom:38px; left:38px; right:38px; }
+.day-pill { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#E07A4A,#C0522A); color:white; font-size:11px; font-weight:800; letter-spacing:3px; text-transform:uppercase; padding:8px 22px; border-radius:30px; margin-bottom:14px; box-shadow:0 5px 18px rgba(200,80,40,0.55); }
+.date-tag { position:absolute; top:28px; right:38px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); color:white; font-size:13px; font-weight:500; padding:8px 18px; border-radius:22px; border:1px solid rgba(255,255,255,0.28); }
+.hero-title { font-family:'Playfair Display',serif; font-size:50px; font-weight:900; color:white; line-height:1.05; text-shadow:0 4px 20px rgba(0,0,0,0.55); }
+.hero-sub { color:rgba(255,255,255,0.78); font-size:15px; font-weight:400; margin-top:10px; letter-spacing:3px; text-transform:uppercase; }
+
+/* ══ NAV BAR ══ */
+.day-nav { background:var(--brown); padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+.day-nav a { color:var(--gold2); text-decoration:none; font-size:13px; font-weight:700; display:flex; align-items:center; gap:6px; }
+.day-nav .center { color:rgba(255,255,255,0.45); font-size:12px; letter-spacing:2px; }
+
+/* ══ CONTENT ══ */
+.content { padding:36px 30px; }
+
+/* ══ SUMMARY BOX ══ */
+.summary-box { background:linear-gradient(135deg,var(--gold-pale),#FFFCF5); border:1.5px solid var(--gold2); border-radius:20px; padding:22px 26px; margin-bottom:38px; display:flex; gap:18px; flex-wrap:wrap; align-items:center; }
+.sum-item { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--brown2); font-weight:500; }
+.sum-icon { font-size:20px; }
+
+/* ══ SECTION HEADER ══ */
+.sec-head { font-size:10px; font-weight:800; letter-spacing:4px; color:var(--coral); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.sec-head::after { content:''; flex:1; height:1px; background:var(--coral2); opacity:0.35; }
+
+/* ══ STOP CARDS ══ */
+.stop { background:var(--white); border-radius:24px; box-shadow:var(--shadow); margin-bottom:30px; overflow:hidden; transition:box-shadow 0.3s,transform 0.3s; }
+.stop:hover { box-shadow:var(--shadow2); transform:translateY(-3px); }
+.stop-top { padding:24px 24px 0 24px; display:flex; gap:18px; align-items:flex-start; }
+.num-circle { width:48px; height:48px; flex-shrink:0; background:linear-gradient(135deg,#D4A030,#9E6E18); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:22px; font-weight:800; box-shadow:0 5px 16px rgba(180,130,40,0.45); margin-top:2px; font-family:'Playfair Display',serif; }
+.stop-meta { flex:1; }
+.stop-time { font-size:11px; font-weight:700; color:var(--brown2); letter-spacing:1.5px; margin-bottom:6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.stop-name { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--text); line-height:1.12; margin-bottom:4px; }
+.stop-name-th { font-size:14px; color:var(--brown2); font-weight:400; }
+.stop-img { width:100%; height:240px; object-fit:cover; display:block; margin-top:18px; }
+.stop-img-placeholder { width:100%; height:240px; display:flex; align-items:center; justify-content:center; font-size:80px; margin-top:18px; }
+.stop-body { padding:20px 24px 24px 24px; }
+.th-label { font-size:11px; font-weight:800; color:var(--coral); letter-spacing:1px; text-transform:uppercase; margin-top:16px; margin-bottom:8px; display:block; }
+.stop-desc { font-size:14.5px; line-height:1.78; color:var(--text2); }
+
+/* ══ TRANSPORT PILLS ══ */
+.transport-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.pill { display:inline-flex; align-items:center; gap:5px; padding:6px 14px; border-radius:22px; font-size:11px; font-weight:700; }
+.pill-walk { background:var(--cream2); color:var(--brown2); border:1px solid #D4B98A; }
+.pill-taxi { background:#FFF9E0; color:#8B6500; border:1px solid #F0D060; }
+.l2 { background:#007A3D; color:white; }
+.l9 { background:#009A97; color:white; }
+.l10 { background:#8E44AD; color:white; }
+.l14 { background:#2C6FA8; color:white; }
+.maglev { background:#2C3E50; color:white; }
+
+/* ══ HIGHLIGHT BOX ══ */
+.highlight { background:linear-gradient(135deg,#FEF9EC,#FFF5DC); border:1.5px solid #E0C870; border-radius:14px; padding:14px 18px; margin-top:14px; font-size:14px; line-height:1.68; color:var(--brown2); }
+.highlight strong { color:#A07020; }
+
+/* ══ FOOD BOX ══ */
+.food-box { background:linear-gradient(135deg,#FFF8F0,#FFEDDB); border-top:1.5px solid #F0CEAD; padding:20px 24px 24px 24px; }
+.food-box-title { font-size:10px; font-weight:800; letter-spacing:3px; color:var(--coral); text-transform:uppercase; margin-bottom:16px; }
+.food-grid { display:flex; gap:14px; flex-wrap:wrap; }
+.food-card { flex:1; min-width:140px; max-width:210px; background:white; border-radius:16px; overflow:hidden; box-shadow:0 3px 12px rgba(0,0,0,0.09); }
+.food-card img { width:100%; height:115px; object-fit:cover; display:block; }
+.food-card-body { padding:10px 13px 14px; }
+.food-name { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; }
+.food-zh { font-size:11px; color:var(--brown2); }
+.food-price { font-size:12px; color:var(--coral); font-weight:700; margin-top:5px; }
+
+/* ══ BADGE ══ */
+.badge { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700; padding:3px 10px; border-radius:10px; }
+.badge-night { background:#15213A; color:#FFD700; }
+.badge-free { background:#E8F5E9; color:#2E7D32; border:1px solid #A5D6A7; }
+.badge-must { background:#FFF3E0; color:#D84315; border:1px solid #FFCC80; }
+
+/* ══ TIPS ══ */
+.tips-section { background:var(--brown); border-radius:24px; padding:30px; margin-top:38px; }
+.tips-title { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--gold2); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+.tip { display:flex; gap:14px; margin-bottom:20px; align-items:flex-start; }
+.tip-icon { font-size:24px; flex-shrink:0; margin-top:1px; }
+.tip-text { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); }
+.tip-text strong { color:var(--gold2); }
+
+/* ══ MAPS BTN ══ */
+.maps-btn { display:inline-flex; align-items:center; gap:6px; background:var(--coral); color:white; text-decoration:none; font-size:12px; font-weight:700; padding:7px 16px; border-radius:22px; margin-top:14px; }
+
+/* ══ FOOTER ══ */
+.day-footer { display:flex; justify-content:flex-end; margin-top:36px; }
+.day-footer a { display:inline-flex; align-items:center; gap:8px; background:var(--brown2); color:var(--gold2); text-decoration:none; font-size:14px; font-weight:700; padding:12px 24px; border-radius:28px; }
+
+@media(max-width:600px){
+  .hero{height:340px;} .hero-title{font-size:36px;} .content{padding:20px 18px;} .hero-content{left:22px;right:22px;bottom:26px;} .date-tag{right:22px;top:22px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bund_at_night_Shanghai.jpg/800px-Bund_at_night_Shanghai.jpg" alt="Shanghai Bund Night" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.88;">
+  <div class="hero-overlay"></div>
+  <div class="date-tag">📅 เสาร์ที่ 28 มีนาคม 2026</div>
+  <div class="hero-content">
+    <div class="day-pill">✈ DAY 1 · ARRIVAL</div>
+    <div class="hero-title">Shanghai<br>The Bund</div>
+    <div class="hero-sub">✈ MU8610 · 外滩 · 南京路</div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<div class="day-nav">
+  <span style="color:rgba(255,255,255,0.3);font-size:13px">Bangkok ✈ Shanghai</span>
+  <span class="center">🇨🇳 SHANGHAI 2026</span>
+  <a href="shanghai_day2.html">Day 2 ▶</a>
+</div>
+
+<div class="content">
+
+  <!-- SUMMARY -->
+  <div class="summary-box">
+    <div class="sum-item"><span class="sum-icon">✈️</span> MU8610 ถึง 01:20 น.</div>
+    <div class="sum-item"><span class="sum-icon">🏨</span> เช็คอิน + พักผ่อน</div>
+    <div class="sum-item"><span class="sum-icon">🪷</span> วัดพระพุทธรูปหยก</div>
+    <div class="sum-item"><span class="sum-icon">🛕</span> วัดจิ้งอัน · ทองตัดสมัยใหม่</div>
+    <div class="sum-item"><span class="sum-icon">🌊</span> The Bund บ่ายนี้</div>
+    <div class="sum-item"><span class="sum-icon">🛍️</span> ถนนนาจิงยามค่ำ</div>
+    <div class="sum-item"><span class="sum-icon">🥟</span> เซียวหลงเปาคำแรก!</div>
+  </div>
+
+  <div class="sec-head">แผนการเดินทางประจำวัน · Day Schedule</div>
+
+  <!-- ── STOP 1: ARRIVAL ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">1</div>
+      <div class="stop-meta">
+        <div class="stop-time">🌙 01:20 น. · Late Night Arrival</div>
+        <div class="stop-name">Pudong International Airport (PVG)</div>
+        <div class="stop-name-th">ท่าอากาศยานนานาชาติผู่ตง · เซี่ยงไฮ้</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Shanghai_Pudong_Airport_2024_%28cropped%29.jpg/960px-Shanghai_Pudong_Airport_2024_%28cropped%29.jpg" alt="Pudong Airport Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">เดินทางถึงเซี่ยงไฮ้จากกรุงเทพฯ ด้วยสายการบิน China Eastern เที่ยวบิน MU8610 ผ่านพิธีตรวจคนเข้าเมือง รับกระเป๋า จากนั้นเดินทางเข้าสู่โรงแรมในใจกลางเมืองเพื่อพักผ่อนก่อนวันใหม่</p>
+      <div class="highlight">💡 <strong>เคล็ดลับกลางดึก:</strong> รถไฟ Maglev วิ่งถึง 23:00 น. เท่านั้น — หลังจากนั้นแนะนำ <strong>แท็กซี่มิเตอร์</strong> จากสนามบิน ราคาประมาณ ¥150–200 เข้าเมือง ใช้เวลา ~40 นาที อย่าขึ้นแท็กซี่เถื่อน!</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill maglev">🚄 Maglev Train (ก่อน 23:00 น.)</span>
+        <span class="pill l2">🟢 Line 2 → City Center</span>
+        <span class="pill-taxi pill">🚕 Taxi ¥150–200 (~40 นาที)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STOP 2: JADE BUDDHA TEMPLE ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">2</div>
+      <div class="stop-meta">
+        <div class="stop-time">
+          ☀️ 10:00 — 11:30 น. · Morning Stop 1
+          <span class="badge" style="background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7;">🪷 เปิด 08:00 น.</span>
+        </div>
+        <div class="stop-name">Jade Buddha Temple (玉佛禅寺)</div>
+        <div class="stop-name-th">วัดพระพุทธรูปหยก · สัมผัสพุทธศาสนาแบบจีน</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/%282024%29_Mahavira_Hall%2C_Jade_Buddha_Temple%2C_Shanghai_-_img_04.jpg/960px-%282024%29_Mahavira_Hall%2C_Jade_Buddha_Temple%2C_Shanghai_-_img_04.jpg" alt="Jade Buddha Temple Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">วัดพุทธที่มีชื่อเสียงที่สุดในเซี่ยงไฮ้ สร้างขึ้นในปี 1882 เพื่อประดิษฐานพระพุทธรูปหยกขาวสองปาง ที่นำมาจาก <strong>พม่า</strong> ด้วยเรือในสมัยราชวงศ์ชิง พระพุทธรูปหยกแกะสลักอย่างวิจิตร สูง 1.95 เมตร งดงามจนหยุดหายใจ — เป็นประสบการณ์ที่ลึกซึ้งมากสำหรับคนไทยที่คุ้นเคยกับพุทธศาสนา!</p>
+      <div class="highlight">🪷 <strong>เคล็ดลับ:</strong> ซื้อธูปและดอกไม้บูชาได้ที่ทางเข้า ราคาประมาณ ¥10–20 · แต่งกายสุภาพ สวมเสื้อผ้าที่ปกปิดไหล่และขา · ในวันหยุดสุดสัปดาห์จะมีคนมาก แนะนำมาก่อน 10:30 น.</div>
+      <div class="highlight" style="margin-top:10px;background:#FFF8E1;border-color:#FFD54F;">🍜 <strong>อาหารเช้าแนะนำ:</strong> ก่อนเข้าวัด แวะทาน <strong>Dim Sum</strong> หรือ <strong>โจ๊กเซี่ยงไฮ้</strong> ที่ร้านแถวๆ Changning Road ข้างวัด — เปิดตั้งแต่ 07:30 น.</div>
+      <div style="margin-top:12px;font-size:13px;color:#888;">💰 ค่าเข้า: ¥50/คน · ⏱️ ใช้เวลา: ~1.5–2 ชั่วโมง</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill" style="background:#9C27B0;color:white;">🟣 Line 13</span>
+        <span class="pill-walk pill">🚶 สถานี Jiangning Road → เดิน 8 นาที (~600m)</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~30 นาที</span> <span style="font-weight:400;">(metro Line 13 + เดิน จากโรงแรมย่านใจกลาง)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Jade+Buddha+Temple+Shanghai+China" target="_blank">📍 Google Maps — Jade Buddha Temple</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 3: JING'AN TEMPLE ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">3</div>
+      <div class="stop-meta">
+        <div class="stop-time">
+          🛕 11:45 — 13:15 น. · Morning Stop 2
+          <span class="badge" style="background:#FFF3E0;color:#E65100;border:1px solid #FFCC80;">📸 ถ่ายรูปสวยมาก</span>
+        </div>
+        <div class="stop-name">Jing'an Temple (静安寺)</div>
+        <div class="stop-name-th">วัดจิ้งอัน · วัดทองกลางเมืองที่ตัดกับตึกสูง</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/%E9%9D%99%E5%AE%89%E5%AF%BA%C2%B7%E4%B8%8A%E6%B5%B7%E9%9D%99%E5%AE%89.jpg/960px-%E9%9D%99%E5%AE%89%E5%AF%BA%C2%B7%E4%B8%8A%E6%B5%B7%E9%9D%99%E5%AE%89.jpg" alt="Jing'an Temple Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">วัดพุทธอายุกว่า <strong>1,700 ปี</strong> สร้างขึ้นครั้งแรกในยุคสามก๊ก ตั้งอยู่กลางถนน Nanjing West Road ท่ามกลางห้างหรูและตึกระฟ้าสมัยใหม่ — ความตัดกันของทองคำโบราณกับกระจกสะท้อนแสงแห่งอนาคตนี้คือภาพที่หาไม่ได้จากที่ไหนในโลก! ภายในมีพระพุทธรูปทองคำขนาดใหญ่ กลิ่นธูปหอม และบรรยากาศสงบงามท่ามกลางความวุ่นวายของมหานคร</p>
+      <div class="highlight">🛕 <strong>จุดเด่น:</strong> ยืนตรงหน้าวัดแล้วถ่ายรูปกับห้าง <strong>Jing'an Kerry Centre</strong> ด้านหลัง — ได้ภาพโบราณตัดสมัยใหม่ที่ฮิตมากใน Instagram · เปิด 07:30–17:00 น.</div>
+      <div class="highlight" style="margin-top:10px;background:#FFF8E1;border-color:#FFD54F;">🍜 <strong>อาหารกลางวันแนะนำ:</strong> หลังออกจากวัด แวะทานข้าวที่ถนน <strong>Nanjing West Road (南京西路)</strong> ข้างๆ มีร้านอาหารหลากหลายทั้ง dim sum, noodles และร้านอาหารไทย-เอเชีย ราคาเป็นมิตร ก่อนเดินทางต่อไป The Bund</div>
+      <div style="margin-top:12px;font-size:13px;color:#888;">💰 ค่าเข้า: ¥50/คน · ⏱️ ใช้เวลา: ~1 ชั่วโมง</div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l2">🟢 Line 2</span>
+        <span class="pill-walk pill">🚇 สถานี Jing'an Temple (静安寺) — ชื่อสถานีเดียวกับวัด! ออก Exit 1</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~15 นาที</span> <span style="font-weight:400;">(Line 2 เพียง 3 สถานี จาก Jade Buddha)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=Jing+An+Temple+Shanghai+China" target="_blank">📍 Google Maps — Jing'an Temple</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 4: THE BUND ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">4</div>
+      <div class="stop-meta">
+        <div class="stop-time">
+          🌤️ 14:30 น. · Afternoon
+          <span class="badge badge-free">FREE เข้าฟรี</span>
+          <span class="badge badge-night">🌙 สวยสุดตอนกลางคืน</span>
+        </div>
+        <div class="stop-name">The Bund (外滩)</div>
+        <div class="stop-name-th">เดอะบันด์ · ริมน้ำฮวงผู่อันเลื่องชื่อ</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Bund_2.jpg/800px-The_Bund_2.jpg" alt="The Bund Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ย่านริมน้ำฮวงผู่ที่โด่งดังที่สุดในเซี่ยงไฮ้ เดินเลียบแนวอาคารสถาปัตยกรรมยุคอาณานิคม Art Deco สีทองอร่ามยาวกว่า 1.5 กม. พร้อมชมวิวฝั่งตรงข้ามที่เต็มไปด้วยตึกระฟ้าสุดอลังการ ได้แก่ Shanghai Tower, Oriental Pearl Tower และ IFC — ภาพนี้คือสัญลักษณ์ของเมืองที่ต้องเก็บไว้ในใจ</p>
+      <div class="highlight">🌙 <strong>กลับมาอีกครั้งตอนกลางคืน!</strong> หลัง 18:30 น. ไฟประดับจะเปิดทั่วทั้งสองฝั่งแม่น้ำ สวยงามที่สุดในเอเชีย — เราจะกลับมาอีกครั้งในวันพรุ่งนี้ตอน sunset</div>
+      <div class="highlight" style="margin-top:10px;background:linear-gradient(135deg,#FFF5F0,#FFE8DC);border-color:#F0A880;">
+        🐂 <strong>วัวทองแดง "Bund Bull":</strong> ตั้งอยู่ที่ <strong>ปลายด้านใต้ของ The Bund</strong> บริเวณแยก Yan'an East Road (延安东路) ตรงข้ามกับ Pudong Development Bank — เป็นประติมากรรมวัวทองแดงขนาดใหญ่ (ยาว 5.2m สูง 3.2m) สร้างโดยศิลปินคนเดียวกับ Wall Street Bull ในนิวยอร์ก เปิดตัวปี 2010 สัญลักษณ์ความรุ่งเรืองทางเศรษฐกิจของจีน · ตำนานบอกว่า <strong>ลูบจมูกวัวแล้วโชคดีตลอดปี!</strong> 🍀
+      </div>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill l2">🟢 Line 2</span>
+        <span class="pill-walk pill">🚶 นั่ง Line 2 ต่อจาก Jing'an Temple → ลงสถานี East Nanjing Road → เดิน 5 นาที (~400m)</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~25 นาที</span> <span style="font-weight:400;">(Line 2 ตรงไม่ต้องเปลี่ยน → East Nanjing Rd)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=The+Bund+Shanghai+China" target="_blank">📍 Google Maps — The Bund</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 5: NANJING ROAD ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">5</div>
+      <div class="stop-meta">
+        <div class="stop-time">🌆 17:30 น. · Evening
+          <span class="badge badge-must">⭐ Must Do</span>
+        </div>
+        <div class="stop-name">East Nanjing Road (南京路步行街)</div>
+        <div class="stop-name-th">ถนนนาจิงตะวันออก · ถนนช้อปปิ้งที่คึกคักที่สุด</div>
+      </div>
+    </div>
+    <img class="stop-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/East_Nanjing_Road_2020_%2850361842166%29.jpg/960px-East_Nanjing_Road_2020_%2850361842166%29.jpg" alt="Nanjing Road Shanghai" style="width:100%;height:240px;object-fit:cover;display:block;margin-top:18px;">
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ถนนคนเดินระดับตำนาน ยาวกว่า 1.2 กม. เต็มไปด้วยห้างสรรพสินค้า ร้านแบรนด์ดัง บูติกท้องถิ่น และของที่ระลึก ยามค่ำคืนบรรยากาศสุดคึกคักด้วยไฟสีสันสดใส เหมาะกับเดินเล่น ช้อปปิ้ง หรือแค่นั่งชมผู้คนที่พลุกพล่าน</p>
+      <span class="th-label">🚇 การเดินทาง :</span>
+      <div class="transport-row">
+        <span class="pill-walk pill">🚶 เดินจาก The Bund ~8 นาที</span>
+        <span class="pill l2">🟢 Line 2 — สถานี East Nanjing Road (南京东路)</span>
+      </div>
+      <div style="font-size:12px;color:#B07040;margin-top:8px;margin-bottom:2px;font-weight:600;">⏱️ เวลาเดินทาง: <span style="color:#C0522A;">~8 นาที</span> <span style="font-weight:400;">(เดินเท่านั้น ตามถนนคนเดิน)</span></div>
+      <a class="maps-btn" href="https://maps.google.com/?q=East+Nanjing+Road+Pedestrian+Street+Shanghai" target="_blank">📍 Google Maps — Nanjing Road</a>
+    </div>
+  </div>
+
+  <!-- ── STOP 6: DINNER ── -->
+  <div class="stop">
+    <div class="stop-top">
+      <div class="num-circle">6</div>
+      <div class="stop-meta">
+        <div class="stop-time">🍽️ 19:30 น. · Dinner Time
+          <span class="badge badge-must">🥟 First Meal!</span>
+        </div>
+        <div class="stop-name">มื้อแรกในเซี่ยงไฮ้ — Xiaolongbao!</div>
+        <div class="stop-name-th">เซียวหลงเปา · เกี๊ยวซุปสัญลักษณ์ของเซี่ยงไฮ้</div>
+      </div>
+    </div>
+    <div class="stop-body">
+      <span class="th-label">📍 สิ่งที่น่าสนใจ :</span>
+      <p class="stop-desc">ไม่มีอะไรจะเป็นมื้อเปิดตัวที่สมบูรณ์แบบกว่า <strong>เซียวหลงเปา (小笼包)</strong> — เกี๊ยวนึ่งบรรจุน้ำซุปร้อนๆ รสชาติเข้มข้นอยู่ข้างในทุกคำ เป็นอาหารประจำเมืองที่ทำให้เซี่ยงไฮ้ขึ้นชื่อไปทั่วโลก แนะนำ <strong>Yang's Dumplings (小杨生煎)</strong> หรือ <strong>Nanxiang Mantou Dian (南翔馒头店)</strong> บริเวณ Nanjing Road</p>
+      <div class="highlight">🥟 <strong>วิธีกินเซียวหลงเปาให้ถูกต้อง:</strong> วางบนช้อน → กัดรูเล็กๆ ที่หัว → ดูดน้ำซุปก่อน → กินทั้งคำ พร้อมขิงดองและน้ำส้มสายชู ระวัง! น้ำซุปร้อนมาก 🔥</div>
+    </div>
+    <div class="food-box">
+      <div class="food-box-title">🍴 ร้านอาหารแนะนำ · Recommended Dishes</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/A_Xiaolongbao_from_The_Modern_Shanghai.jpg/480px-A_Xiaolongbao_from_The_Modern_Shanghai.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Xiaolongbao</div>
+            <div class="food-zh">小笼包 · เกี๊ยวน้ำซุปนึ่ง</div>
+            <div class="food-price">~¥28–45 / 6 ลูก</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Baozi_Chengdu.JPG/480px-Baozi_Chengdu.JPG">
+          <div class="food-card-body">
+            <div class="food-name">Shengjianbao</div>
+            <div class="food-zh">生煎包 · เกี๊ยวทอดกรอบ</div>
+            <div class="food-price">~¥15–25 / 4 ลูก</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Pork_Steamed_Wontons.jpg/480px-Pork_Steamed_Wontons.jpg">
+          <div class="food-card-body">
+            <div class="food-name">Wonton Noodles</div>
+            <div class="food-zh">馄饨面 · ก๋วยเตี๋ยววันตัน</div>
+            <div class="food-price">~¥20–35 / ชาม</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TIPS ══ -->
+  <div class="tips-section">
+    <div class="tips-title">💡 เคล็ดลับสำหรับวันแรก · Day 1 Tips</div>
+    <div class="tip">
+      <span class="tip-icon">🚇</span>
+      <div class="tip-text"><strong>Metro สาย 2 (สีเขียว)</strong> คือเส้นทางหลักที่เชื่อมสนามบินผู่ตง (PVG) ตรงถึงใจกลางเมือง ผ่าน Lujiazui (ผู่ตง), East Nanjing Road (เดอะบันด์) ไปจนถึง Hongqiao — สายเดียวครอบคลุมทุกที่ต้องไปในวันแรก</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">📱</span>
+      <div class="tip-text"><strong>ดาวน์โหลด App ก่อนไป:</strong> <strong>Alipay</strong> (เชื่อมบัตร Visa/Mastercard ต่างชาติได้แล้ว!), <strong>DiDi</strong> (Uber ของจีน), <strong>MetroMan Shanghai</strong> (แผนที่รถไฟฟ้า), <strong>Google Maps</strong> ต้องการ VPN ในจีน</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌙</span>
+      <div class="tip-text"><strong>The Bund สวยที่สุดตอนกลางคืน!</strong> หลัง 18:30 น. ไฟประดับสองฝั่งแม่น้ำฮวงผู่จะสว่างอร่าม วิวนี้คือ highlight ของทริปนี้ — แนะนำให้กลับมาเดินอีกครั้งหลังทานข้าวเย็น</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌡️</span>
+      <div class="tip-text"><strong>อากาศปลายมีนาคม:</strong> ฤดูใบไม้ผลิ อุณหภูมิ <strong>14–20°C</strong> กลางวันอบอุ่น กลางคืนเย็นลง แนะนำพกเสื้อแจ็คเก็ตบางและร่มพับ (โอกาสฝนตกเล็กน้อย)</div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🔑</span>
+      <div class="tip-text"><strong>VPN แนะนำ:</strong> Google, Facebook, Instagram ถูกบล็อกในจีน ติดตั้ง VPN บนโทรศัพท์ทุกเครื่องก่อนออกเดินทาง เพื่อใช้ Maps, Line, WhatsApp ได้ตามปกติ</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="day-footer">
+    <a href="shanghai_day2.html">Day 2 — Yu Garden &amp; French Concession ▶</a>
+  </div>
+  <div style="text-align:center;padding:28px 0 8px;color:var(--brown2);font-size:12px;opacity:0.55;letter-spacing:1px;">
+    🇨🇳 Shanghai Family Trip · March 2026
+  </div>
+
+</div>
+</body>
+</html>
